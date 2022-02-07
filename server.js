@@ -14,13 +14,13 @@ app.use(
   })
 );
 
-const passport = require("./lib/passport");
-app.use(passport.initialize());
-app.use(passport.session());
+// const passport = require("./lib/passport");
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use(flash());
 
-app.use("view engine", "ejs");
+app.set("view engine", "ejs");
 
 const router = require("./router");
 app.use(router);
