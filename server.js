@@ -1,10 +1,12 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 const session = require("express-session");
 const flash = require("express-flash");
 const { PORT = 3000 } = process.env;
 
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(
   session({

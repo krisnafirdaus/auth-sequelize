@@ -2,6 +2,7 @@
 const { Model } = require("sequelize");
 const bcrypt = require("bcrypt");
 const { password } = require("pg/lib/defaults");
+const jwt = require("jsonwebtoken");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -22,6 +23,17 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     checkPassword = (password) => bcrypt.compareSync(password, this.password);
+
+    generateToken = () => {
+      const payload = {
+        id: this.id,
+        username: this.username,
+      };
+
+      const rahasia = "Ini rahasia";
+      const token = jwt.sign(payload, rahasia);
+      return token;
+    };
 
     static authenticate = async ({ username, password }) => {
       try {
