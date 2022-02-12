@@ -7,6 +7,7 @@ router.get("/whoami", restrict, auth.whoami);
 router.get("/login", (req, res) => res.render("login"));
 
 router.get("/register", (req, res) => res.render("register"));
+router.get("/api/v1/auth/whoami", restrict, auth.whoami);
 // router.post("/register", auth.register);
 // router.post("/login", auth.login);
 

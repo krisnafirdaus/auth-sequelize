@@ -30,6 +30,7 @@ module.exports = {
   },
 
   whoami: (req, res) => {
-    res.render("profile", req.user.dataValues);
+    const currentUser = req.user;
+    res.json(currentUser);
   },
 };
